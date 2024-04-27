@@ -1,7 +1,7 @@
 :root {
-  --primary: #b5a1e5;
+  --primary: #0db7d9;
   --on-primary: #100e17;
-  --background: #131214;
+  --background: #343137;
   --on-background: #eae6f2;
   --surface: #1d1c1f;
   --on-surface: #dddae5;
@@ -16,7 +16,7 @@
   --on-bg-aqi-3: #332b1f;
   --bg-aqi-4: #e58989;
   --on-bg-aqi-4: #331f1f;
-  --bg-aqi-5: #e589b7;
+  --bg-aqi-5: #2a97d5;
   --on-bg-aqi-5: #331f29;
   --white: hsl(0, 0%, 100%);
   --white-alpha-4: hsla(0, 0%, 100%, 0.04);
