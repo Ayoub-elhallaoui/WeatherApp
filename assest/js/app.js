@@ -218,7 +218,7 @@ export const updateWeather = (lat,lon)=>{
                     <h3 class="title-3">Feels Like</h3>
                     <div class="wrapper">
                         <span class="m-icon">thermostat</span>
-                        <p class="title-1">${parseInt(feels_like)}&deg;<sup>c</sup></p>
+                        <p id="DataW1" class="title-1">${parseInt(feels_like)}&deg;<sup>c</sup></p>
                     </div>
                 </div>
             </div>
@@ -294,7 +294,7 @@ export const updateWeather = (lat,lon)=>{
                     <div class="icon-wrapper">
                         <img src="./assest/images/icons/${icon}.png" width="36" height="36" alt="${description}" class="weather-icon">
                         <span class="span">
-                        <p class="title-2">${parseInt(temp_max)}&deg;</p>
+                        <p id="DataW" class="title-2">${parseInt(temp_max)}&deg;</p>
                         </span>
                     </div>
                     <p class="label-1">${date.getDate()} ${module.monthNames[date.getMonth()]}</p>
@@ -308,6 +308,32 @@ export const updateWeather = (lat,lon)=>{
         });
     });
 }
+
+let isFahrenheit = false;
+let originalTemps = [];
+
+document.getElementById('temp-toggle').addEventListener('click', () => {
+    isFahrenheit = !isFahrenheit;
+    document.getElementById('temp-toggle').textContent = isFahrenheit ? '° C' : '° F';
+    const tempElements = document.querySelectorAll('#DataW, #DataW1');
+
+    if (isFahrenheit) {
+        // Convert to Fahrenheit and store the original Celsius values
+        tempElements.forEach((el, index) => {
+            const tempCelsius = parseFloat(el.textContent);
+            originalTemps[index] = tempCelsius;
+            if (!isNaN(tempCelsius)) {
+                el.textContent = `${module.celsiusToFahrenheit(tempCelsius).toFixed(1)}°F`;
+            }
+        });
+    } else {
+        // Convert back to Celsius using the original values
+        tempElements.forEach((el, index) => {
+            el.textContent = `${Math.round(originalTemps[index])}°C`;
+        });
+    }
+});
+
 export const error404=()=>{
     errorContent.style.display="flex"
 };

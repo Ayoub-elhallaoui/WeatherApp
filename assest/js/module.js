@@ -1,4 +1,7 @@
+// Enable strict mode for more rigorous error checking
 'use strict';
+
+// Array of weekday names
 export const weekDayNames=[
     "Monday",
     "Tuesday",
@@ -8,6 +11,8 @@ export const weekDayNames=[
     "Saturday",
     "Sunday",
 ];
+
+// Array of month names
 export const monthNames=[
     "Jan",
     "Feb",
@@ -22,6 +27,8 @@ export const monthNames=[
     "Nov",
     "Dec"
 ];
+
+// Function to get a formatted date string from a Unix timestamp and a timezone
 export const getDate = (dateUnix,timezone)=>{
     const date = new Date((dateUnix+timezone)*1000);
     const weekDayName = weekDayNames[date.getUTCDay()];
@@ -29,6 +36,8 @@ export const getDate = (dateUnix,timezone)=>{
 
     return `${weekDayName} ${date.getUTCDate()} ${monthName}`;
 }
+
+// Function to get a formatted time string from a Unix timestamp and a timezone
 export const getTime = (timeUnix, timezone) => {
     const date = new Date((timeUnix +timezone)* 1000);
     const hours = date.getUTCHours();
@@ -36,6 +45,8 @@ export const getTime = (timeUnix, timezone) => {
     const period = hours >= 12 ? "PM" : "AM";
     return `${hours % 12 || 12}:${minutes < 10 ? "0" : ""}${minutes} ${period}`;
 };
+
+// Function to get a formatted hours string from a Unix timestamp and a timezone
 export const getHours = (timeUnix, timezone) => {
     const date = new Date((timeUnix +timezone)* 1000);
     const hours = date.getUTCHours();
@@ -43,15 +54,16 @@ export const getHours = (timeUnix, timezone) => {
     return `${hours % 12 || 12} ${period}`;
 };
 
-/**
- * 
- * @param {number} mps metter per seconed 
- * @returns {number} kilometer per hours
- */
+// Function to convert speed from meters per second to kilometers per hour
 export const mps_to_kmh=mps=>{
     const mph =mps * 3600;
     return mph / 1000;
 }
+
+// Function to convert Celsius to Fahrenheit
+export const celsiusToFahrenheit = celsius => (celsius * 9/5) + 32;
+
+// Object mapping AQI levels to their descriptions
 export const aqiText ={
     1:{
         level : "Good",
