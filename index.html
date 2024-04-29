@@ -27,6 +27,7 @@
 
     <script type="module" src="./assest/js/app.js"></script>
     <script type="module" src="./assest/js/route.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header class="header">
@@ -74,6 +75,14 @@
             <div class="loading" data-loading>
             </div>
         </article>
+        <!-- ChartJs Day -->
+        <section class="section current-weather" aria-label="current weather" data-current-weather>
+            <canvas id="dayWeatherChart"></canvas>
+        </section>
+        <!-- ChartJs Month -->
+        <section class="section forecast" aria-labelledby="forecast-label" data-5-day-forecast>
+            <canvas id="monthWeatherChart"></canvas>
+        </section>
     </main>
     <!-- 404 Section -->
     <section class="error-content" data-error-content>

@@ -1,5 +1,6 @@
 'use strict';
 
+// Your OpenWeatherMap API key
 const apiKey= "511c0d53e786d6e701870951d85c605d";
 
 export const fetchData = (URL,callback)=>{

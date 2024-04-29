@@ -7,15 +7,23 @@ import * as module from "./module.js";
  * @param {String} eventType Event Type e.g: "click","mouseover"
  * @param {Function} callback callback function
  */
+
+// Function to add event listeners to a list of elements
 const addEventOnElements=(elements, eventType, callback)=>{
     for(const element of elements)
         element.addEventListener(eventType,callback);
 }
+
+// Selecting elements for search view and search toggler
 const searchView = document.querySelector("[data-search-view]");
 const searchTogglers = document.querySelectorAll("[data-search-toggler]");
+
+// Function to toggle search view
 const toggleSearch=()=>{
     searchView.classList.toggle("active");
 }
+
+// Adding click event to search toggler
 addEventOnElements(searchTogglers,"click",toggleSearch);
 
 // search integration
@@ -26,6 +34,7 @@ const searchResult = document.querySelector("[data-search-result]");
 let searchTimeOut =null;
 let searchTimeOutDuration = 500;
 
+// Adding input event listener to search field
 searchField.addEventListener("input",()=>{
     searchTimeOut ?? clearTimeout(searchTimeOut);
     if(!searchField.value){
@@ -39,6 +48,7 @@ searchField.addEventListener("input",()=>{
     if(searchField.value){
         clearTimeout(searchTimeOut)
         searchTimeOut=setTimeout(()=>{
+            // Fetching data based on search field value
             fetchData(url.geo(searchField.value),(locations)=>{
                 searchField.classList.remove("searching");
                 searchResult.classList.add("active");
@@ -69,11 +79,13 @@ searchField.addEventListener("input",()=>{
     }
 });
 
+// Selecting elements for container, loading, current location button and error content
 const container = document.querySelector("[data-container]");
 const loading = document.querySelector("[data-loading]");
 const currentLocationBtn = document.querySelector("[data-current-location-btn]");
 const errorContent = document.querySelector("[data-error-content]")
 
+// Function to update weather based on latitude and longitude
 export const updateWeather = (lat,lon)=>{
     loading.style.display="grid";
     //container.style.overflowY="hidden";
@@ -333,6 +345,8 @@ document.getElementById('temp-toggle').addEventListener('click', () => {
         });
     }
 });
+
+
 
 export const error404=()=>{
     errorContent.style.display="flex"
